@@ -5,7 +5,7 @@
     <h2>{{money | number}}</h2>
     <button @click="money=25;">改变money</button>
     <button @click="obj.a.b.c=123">改变obj{{obj.a.b.c}}</button>
-    <HelloWorld ref="helloComponent" msg="Welcome to Your Vue.js + TypeScript App"/>
+    <HelloWorld ref="helloComponent" msg="Welcome to Your Vue.js + TypeScript App" :toChildMoney='money' @getMoneyChange="moneyChange($event)"/>
   </div>
 </template>
 
@@ -26,7 +26,7 @@
     }
 
     private createTime = 1569380253057;
-    private money:number = 20;
+    money:number = 20;
     private obj = {
       a:{
         b:{
@@ -40,6 +40,10 @@
       await this.$get('/api/home/init').then((res:any)=>{
         //console.info(res)
       })
+    }
+
+    moneyChange(data:number){
+      this.money = data;
     }
 
     //watch
