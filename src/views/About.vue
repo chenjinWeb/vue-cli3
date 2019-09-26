@@ -3,8 +3,22 @@
     <h1>{{msg}}</h1>
     <h1>{{msgObj.a}}</h1>
     <h1>{{computedMsg}}</h1>
+    <div>父组件传给子组件的4种方式：</div>
+    <ul>
+      <li>
+        <Header :msg1="msg1" />
+      </li>
+      <li>
+        <Header :msg2="msg2" />
+      </li>
+      <li>
+        <Header :msg3="msg3" />
+      </li>
+      <li>
+        <Header :msg1="msg1" />
+      </li>
+    </ul>
     <button @click="getMsg()">按钮</button>
-    <Header />
   </div>
 </template>
 
@@ -22,6 +36,12 @@
     
     //初始化数据
     private msg:string = 'This is an about page';
+
+    private msg1:number = 10;
+    private msg2:boolean = false;
+    msg3:object = {
+      a:'1'
+    };
 
     private msgObj:MsgObj={
       a:'data1',
